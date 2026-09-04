@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Offerings", href: "#products" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+  { label: "درباره ما", href: "#about" },
+  { label: "محصولات", href: "#products" },
+  { label: "نمونه‌کارها", href: "#portfolio" },
+  { label: "تماس", href: "#contact" },
 ];
 
 export default function Nav() {
@@ -38,7 +38,7 @@ export default function Nav() {
       className="fixed inset-x-0 top-6 z-50 flex justify-center px-4"
     >
       <div className="flex w-full max-w-xl items-center justify-between gap-6 rounded-full border border-gold-line bg-ink-900/70 px-6 py-3 backdrop-blur-xl md:w-auto">
-        <a href="#hero" className="font-display text-sm italic tracking-wide text-gold-bright">
+        <a href="#hero" dir="ltr" className="font-wordmark text-xs uppercase tracking-[0.15em] text-gold-bright">
           Montakhab Gold
         </a>
 
@@ -47,7 +47,7 @@ export default function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="font-body text-[11px] uppercase tracking-[0.2em] text-bone-muted transition-colors duration-500 hover:text-gold-bright"
+                className="font-body text-sm text-bone-muted transition-colors duration-500 hover:text-gold-bright"
               >
                 {l.label}
               </a>
@@ -56,7 +56,7 @@ export default function Nav() {
         </ul>
 
         <button
-          aria-label="Toggle menu"
+          aria-label="باز و بسته کردن منو"
           onClick={() => setMenuOpen((v) => !v)}
           className="relative flex h-6 w-6 flex-col items-center justify-center gap-1.5 md:hidden"
         >
@@ -88,7 +88,7 @@ export default function Nav() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-3xl italic text-bone"
+                className="font-display text-3xl text-bone"
               >
                 {l.label}
               </motion.a>

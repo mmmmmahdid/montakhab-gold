@@ -1,6 +1,6 @@
 ---
 name: taste
-description: Design taste and motion conventions for the Montakhab Gold site — cinematic dark-gold luxury aesthetic, component structure, color/type tokens, and GSAP/Framer/Lenis motion rules. Load before any new UI, section, or animation work in this project.
+description: Design taste and motion conventions for the Montakhab Gold site — cinematic dark-gold luxury aesthetic, Persian (Farsi) RTL layout, component structure, color/type tokens, and GSAP/Framer/Lenis motion rules. Load before any new UI, section, or animation work in this project.
 ---
 
 # Taste — Montakhab Gold design system
@@ -24,13 +24,53 @@ color — most of the page stays near-black with off-white text.
 - `gold` / `gold-bright` / `gold-dim` / `gold-line` — accent, brighter accent
   (headline emphasis), muted accent (borders/hover), and the near-invisible
   hairline used on almost every card/input border.
-- `font-display` (Playfair Display, serif, italic for emphasis) for all
-  headlines — oversized, `clamp()`-sized, weight 500–900.
-- `font-body` (Manrope, weight 200–300) for supporting copy — always small
+- `font-display` (Amiri, Persian/Arabic serif) for all headlines — oversized,
+  `clamp()`-sized. **Only weights 400 and 700 exist** (that's all Amiri
+  ships) — use `font-bold`, never `font-medium`/`font-semibold` on
+  `font-display` text, or the browser fake-bolds and it looks soft.
+- `font-body` (Vazirmatn, weight 200–300) for supporting copy — always small
   and light, never competing with the display type.
-- `.eyebrow` utility class in globals.css — the microscopic uppercase label
-  that precedes every section heading ("ABOUT THE HOUSE", "OFFERINGS", etc.).
-  Reuse it; don't reinvent a label style per-section.
+- `font-wordmark` (Cinzel, Latin, no italic form) — reserved *only* for the
+  brand name "Montakhab Gold Company" wherever it appears in Latin script
+  (Nav, Hero closing statement, Footer). Always set `uppercase
+  tracking-[0.05em]` (large/Hero) or `tracking-[0.15em]` (small/Nav+Footer)
+  — Cinzel is a Roman-inscription-style luxury display face, meant to be
+  read as a tracked-out caps logotype, not run italic or in sentence case.
+  Only weights 500/600 are loaded. Always pair it with `dir="ltr"` on that
+  element so the bidi algorithm doesn't reorder it inside RTL flow. Never
+  use `font-wordmark` for anything else, and never put Persian text in it —
+  it has no Arabic glyphs.
+- `.eyebrow` utility class in globals.css — the small gold label that
+  precedes every section heading ("درباره خانه منتخب", "محصولات", etc.). No
+  `letter-spacing` or `uppercase` on it — both break Perso-Arabic letter
+  joining. Reuse it; don't reinvent a label style per-section.
+
+## Language: Persian (Farsi), RTL
+
+The whole site is `<html lang="fa" dir="rtl">` (`src/app/layout.tsx`). All
+copy is Persian except the brand wordmark. When adding any new section:
+
+- **No `italic` anywhere in this project.** Perso-Arabic fonts have no
+  italic form — Amiri/Vazirmatn will either ignore it or the browser will
+  synthesize a slant that breaks letter joining — and `font-wordmark`
+  (Cinzel) has no italic either. Use `text-gold-bright` color, or
+  `font-wordmark`'s uppercase+tracking treatment, for emphasis instead.
+- **No `tracking-*` / `letter-spacing` on Persian text**, same reason —
+  connected script, spacing breaks the connections. Fine on `font-wordmark`
+  Latin text only.
+- **Line-height runs looser than the Latin original.** Persian's taller
+  ascenders/diacritics need more room — headlines use `leading-[1.5]` to
+  `leading-[1.6]` (vs. the `leading-[1.05]` that worked for Latin caps),
+  body copy uses `leading-loose`.
+- **Most layout just works under `dir="rtl"` for free** — flexbox `row` and
+  CSS Grid both respect `direction` and mirror automatically (confirmed:
+  Nav's flex order, About's 2-col grid, Products' bento grid all flipped
+  correctly with zero extra code). Only fix by hand what's provably broken:
+  a directional icon (the Contact CTA arrow is `↖`, not `↗`), or Latin
+  content that needs `dir="ltr"` so bidi doesn't reorder it (emails, the
+  wordmark).
+- **Numerals**: stat/label numbers use Persian digits (`٪۹۹.۹۹`, `+۳۰`) to
+  match the rest of the Persian text — see `About.tsx`'s stats array.
 
 ## Component patterns to reuse, not reinvent
 

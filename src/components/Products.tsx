@@ -2,21 +2,21 @@ import Reveal from "./Reveal";
 
 const offerings: { title: string; desc: string; big?: boolean }[] = [
   {
-    title: "Investment Gold Bars",
-    desc: "LBMA-aligned bars cast and certified for long-term holding.",
+    title: "شمش‌های سرمایه‌گذاری",
+    desc: "شمش‌های منطبق با استاندارد LBMA، قالب‌گیری و گواهی‌شده برای نگهداری بلندمدت.",
     big: true,
   },
   {
-    title: "Gold Coins",
-    desc: "Minted collector and bullion coins in classic denominations.",
+    title: "سکه‌های طلا",
+    desc: "سکه‌های ضرب‌شده کلکسیونی و سرمایه‌گذاری در قطعات کلاسیک.",
   },
   {
-    title: "Bespoke Trading",
-    desc: "Private consultation for high-volume acquisition and trade.",
+    title: "معاملات اختصاصی",
+    desc: "مشاوره خصوصی برای خرید و معامله در حجم بالا.",
   },
   {
-    title: "Certified Assay",
-    desc: "Independent purity verification on every transaction.",
+    title: "آزمایش عیار مستقل",
+    desc: "تأیید مستقل خلوص در هر معامله.",
   },
 ];
 
@@ -25,9 +25,9 @@ export default function Products() {
     <section id="products" className="relative bg-ink px-6 py-24 md:py-40">
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16 max-w-2xl">
-          <p className="eyebrow mb-6">Offerings</p>
-          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4rem)] font-semibold leading-[1.05] text-bone">
-            Every ounce, <span className="italic text-gold-bright">accounted for.</span>
+          <p className="eyebrow mb-6">محصولات</p>
+          <h2 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.5] text-bone">
+            هر مثقال، <span className="text-gold-bright">با دقت ثبت‌شده.</span>
           </h2>
         </Reveal>
 
@@ -45,10 +45,8 @@ export default function Products() {
                     : "min-h-[13rem]"
                 }`}
               >
-                <h3 className="font-display text-2xl italic text-bone md:text-3xl">
-                  {o.title}
-                </h3>
-                <p className="mt-3 max-w-xs font-body text-sm font-light leading-relaxed text-bone-muted">
+                <h3 className="font-display text-2xl text-bone md:text-3xl">{o.title}</h3>
+                <p className="mt-3 max-w-xs font-body text-sm font-light leading-loose text-bone-muted">
                   {o.desc}
                 </p>
               </div>

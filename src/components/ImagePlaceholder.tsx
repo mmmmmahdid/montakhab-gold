@@ -14,9 +14,7 @@ export default function ImagePlaceholder({
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
           <span className="h-px w-10 bg-gold-dim" />
-          <span className="font-body text-[10px] uppercase tracking-[0.3em] text-bone-dim">
-            {label}
-          </span>
+          <span className="font-body text-xs text-bone-dim">{label}</span>
         </div>
         <div className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_1px_rgba(244,239,228,0.06)]" />
       </div>

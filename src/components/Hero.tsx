@@ -141,13 +141,14 @@ export default function Hero() {
 
       <div className="absolute inset-x-0 bottom-14 z-20 px-6 text-center md:bottom-20">
         <p ref={eyebrowRef} className="eyebrow mb-4 opacity-0">
-          Est. Precision &middot; Est. Trust
+          دقت پایدار &middot; اعتماد نسل‌ها
         </p>
         <h1
           ref={headlineRef}
-          className="font-display text-[clamp(2rem,6vw,5.5rem)] font-medium italic leading-[0.95] text-bone opacity-0"
+          dir="ltr"
+          className="font-wordmark text-[clamp(1.4rem,4.6vw,4.25rem)] font-semibold uppercase tracking-[0.05em] leading-[1.15] text-bone opacity-0"
         >
-          Gold, <span className="text-gold-bright">perfected.</span>
+          Montakhab <span className="text-gold-bright">Gold</span> Company
         </h1>
       </div>
 
@@ -155,9 +156,7 @@ export default function Hero() {
         ref={cueRef}
         className="absolute bottom-10 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3"
       >
-        <span className="font-body text-[10px] uppercase tracking-[0.35em] text-bone-dim">
-          Scroll
-        </span>
+        <span className="font-body text-xs text-bone-dim">اسکرول کنید</span>
         <span className="block h-10 w-px bg-gradient-to-b from-gold to-transparent" />
       </div>
     </section>

@@ -31,6 +31,8 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
+        // the Latin brand wordmark only — "Montakhab Gold Company" wherever it appears
+        wordmark: ["var(--font-wordmark)", "serif"],
       },
       letterSpacing: {
         widest2: "0.35em",
